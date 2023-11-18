@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD START -->
+{% block head %} {% include 'block_files/head.html' %} {% endblock head %}
+<!-- HEAD END -->
+
+
+
+
+<!-- todos:  make dash scroll   -->
+
+<body>
+
+    <!-- HEADER START -->
+
+    <header>
+
+
+
+        <!-- ! typing and blinking cursor w/css start -->
+
+        <div class="css-typing">
+            <h1>
+                the Trmnl
+            </h1>
+            <h2 class="mt">
+                gossip for devs, by devs.
+            </h2>
+        </div>
+
+        <!-- ! typing and blinking cursor w/css end -->
+
+        <nav>
+        </nav>
+    </header>
+    <!-- HEADER END -->
+
+
+
+
+    <!-- FLASH VALIDATION MESSAGES-->
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flx alert col gap-1 mb">
+                {% for message in messages %}
+                        <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <main>
+        <div class="flx row gap-4 border-t-dash border-b-dash">
+
+
+
+            <!-- REGISTRATION FORM -->
+
+            <form action="/register" method="post" class="mt mb flx col gap-1" id="reg">
+                <div class="flx row">
+                    <div class="flx-1"></div>
+
+                    <div class="flx-2">
+                        <h2 class="text-center">join the community!</h2>
+                    </div>
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="first_name" class="flx-1">First Name: </label>
+                    <input type="text" name="first_name" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="last_name" class="flx-1">Last Name: </label>
+                    <input type="text" name="last_name" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="email" class="flx-1">Email: </label>
+                    <input type="text" name="email" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="password" class="flx-1">Create password: </label>
+                    <input type="password" name="password" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="confirm_password" class="flx-1">Confirm password: </label>
+                    <input type="password" name="confirm_password" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+                <div class="flx row">
+                    <div class="flx-1"></div>
+
+                    <div class="flx-2">
+                        <button type="submit">
+                            create account
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- FORM END REGISTRATION-->
+
+
+
+            <!-- LOGIN FORM -->
+
+            <form action="/login" method="post" class="border-l-dash mt mb pd-l-20 flx col gap-1" id="login">
+                <div class="flx row">
+                    <div class="flx-1"></div>
+
+                    <div class="flx-2">
+                        <h2 class="text-center">or sign-in</h2>
+                    </div>
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="email" class="flx-1">Email: </label>
+                    <input type="text" name="email" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+                <div class="flx row align-items-base">
+                    <label for="password" class="flx-1">Password: </label>
+                    <input type="password" name="password" class="flx-2 border-l-none border-r-none border-t-none">
+                </div>
+
+
+                <div class="flx row">
+                    <div class="flx-1"></div>
+
+                    <div class="flx-2">
+                        <button type="submit" >login</button>
+                    </div>
+                </div>
+
+            </form>
+            <!-- FORM LOGIN END -->
+
+        </div>    
+    </main>
+    <!-- <script src="{{url_for('static', filename='/js/typing_animation.js')}}"></script> -->
+</body>
+</html>

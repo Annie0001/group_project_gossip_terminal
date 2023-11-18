@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD START -->
+{% block head %} {% include 'block_files/head.html' %} {% endblock head %}
+<!-- HEAD END -->
+
+<body>
+
+    <!-- HEADER START -->
+    {% block header %} {% include 'block_files/header.html' %} {% endblock header %}
+    <!-- HEADER END -->
+
+
+
+    <!-- FLASH VALIDATION MESSAGES-->
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flx alert col gap-1 mb">
+                {% for message in messages %}
+                        <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <main>
+
+
+
+            <!-- ADD GOSS FORM -->
+
+            <form action="/user/{{ this_user.id }}/add_goss" method="POST" class="flx col gap-2">
+                
+                <div class="flx row">
+                    <label for="post_title" class="flx-1">TLDR:
+                    </label>
+                    <input type="text" name="post_title" class="flx-7 border-l-none border-r-none border-t-none">
+                </div>
+
+                <!-- eventually would like these to be checkboxes for multiple selections per form -->
+                <label for="post_category" class="flx row align-items-center">Type of goss:
+                    <div class="custom-select ml">
+                        <select name="post_category" id="post_category">
+                            <option value="job lead">job lead</option>
+                            <option value="boss goss">boss goss</option>
+                            <option value="gear gab">gear gab</option>
+                            <option value="maang leak">maang leak</option>
+                            <option value="whistle blow">whistle blow</option>
+                            <option value="mentor/mentee">mentor/mentee</option>
+                            <option value="tech seen on tv">tech seen on tv</option>
+                        </select>
+                    </div>
+                </label>
+
+                <label for="post_text">Spill your truth:
+                </label>
+                <textarea type="textarea" name="post_text" rows="10" class="border-l-none border-r-none border-t-none"></textarea>
+
+                <div>
+                    <button type="submit">truth tell</button>
+                </div>
+            </form>
+
+            <!-- FORM END-->
+
+
+
+
+    </main>
+
+    <!-- FOOTER START -->
+    {% block footer %} {% include 'block_Files/footer.html' %} {% endblock footer %}
+    <!-- FOOTER END -->
+
+
+</body>
+</html>

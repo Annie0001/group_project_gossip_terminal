@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal of Goss</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+
+    <!-- HEADER START -->
+    {% block header %} {% include 'block_files/header.html' %} {% endblock header %}
+    <!-- HEADER END -->
+
+
+
+
+    <!-- FLASH VALIDATION MESSAGES-->
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flx alert col gap-1 mb">
+                {% for message in messages %}
+                        <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <main>
+
+
+
+            <!-- EDIT GOSS FORM -->
+
+            <form action="/user/{{ this_user.id }}/goss/{{ post.id }}/update" method="POST" class="flx col gap-2">
+                <label for="post_title">TLDR:
+                </label>
+                <input type="text" name="post_title" value="{{ post.post_title }}" class="border-l-none border-r-none border-t-none">
+
+                <label for="post_category" class="flx row align-items-center">Type of goss:
+                    <div class="custom-select ml">
+                        <select name="post_category" id="post_category">
+                            <option value="job lead" {% if post.post_category == 'job lead' %} selected="selected" {% endif %}>job lead</option>
+                            <option value="boss goss" {% if post.post_category == 'boss goss' %} selected="selected" {% endif %}>boss goss</option>
+                            <option value="gear gab" {% if post.post_category == 'tech tools' %} selected="selected" {% endif %}>gear gab</option>
+                            <option value="maang leak" {% if post.post_category == 'maang leak' %} selected="selected" {% endif %}>maang leak</option>
+                            <option value="mentor/mentee" {% if post.post_category == 'mentor/mentee' %} selected="selected" {% endif %}>mentor/mentee</option>
+                            <option value="tech seen on tv" {% if post.post_category == 'tech seen on tv' %} selected="selected" {% endif %}>tech seen on tv</option>
+                        </select>
+                    </div>
+                </label>
+
+                <label for="post_text">Edit your truth:
+                </label>
+                <textarea type="textarea" name="post_text" rows="10" class="border-l-none border-r-none border-t-none">{{ post.post_text }}</textarea>
+
+
+                <div>
+                    <button type="submit">update your truth</button>
+                </div>
+            </form>
+
+            <!-- FORM END-->
+
+
+    </main>
+
+
+
+    <!-- FOOTER START -->
+    {% block footer %} {% include 'block_Files/footer.html' %} {% endblock footer %}
+    <!-- FOOTER END -->
+    
+
+
+</body>
+</html>

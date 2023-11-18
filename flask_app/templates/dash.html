@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD START -->
+{% block head %} {% include 'block_files/head.html' %} {% endblock head %}
+<!-- HEAD END -->
+
+<body>
+
+
+
+    <!-- HEADER START -->
+    {% block header %} {% include 'block_files/header.html' %} {% endblock header %}
+    <!-- HEADER END -->
+
+
+
+
+    <main>
+        <div class="flx row gap-4 main-height">
+
+
+
+
+            <!-- EVERYONE'S GOSS -->
+
+            <table class="big-section">
+                <thead>
+                    <tr>
+                        <th>
+                            <span>
+                                dishing dev
+                            </span>
+                        </th>
+                        <th class="pd-l-10">
+                            spilled
+                        </th>
+                        <th class="pd-l-10">
+                            their truth
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in othersPosts %}
+                        <tr class="glow">
+                            <td>
+                                {{ post.creator.first_name }} {{ post.creator.last_name }} spilled T
+                            </td>
+                            <td class="pd-l-10">
+                                <a href="/user/{{ this_user.id }}/goss/{{ post.id }}/view" class="rowlink">{{ post.created_at.strftime("%m-%d-%Y") }}</a>
+                            </td>
+                            <td class="pd-l-10">
+                                {{ post.post_title }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+             </table>
+            <!-- EVERYONE'S GOSS -->
+
+
+
+
+
+            <!-- MY GOSS -->
+            <div class="sml-section border-l-dash">
+                <table class="ml">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>
+                                    I posted
+                                </span>
+                            </th>
+                            <th class="pd-l-10">
+                                my goss
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in userPosts %}
+                            <tr class="glow">
+                                <td>
+                                    {{ post.created_at.strftime("%m-%d-%Y") }} at {{ post.created_at.strftime("") }} - - 
+                                </td>
+                                <td class="pd-l-10">
+                                    <a href="/user/{{ this_user.id }}/goss/{{ post.id }}/view" class="rowlink">
+                                        {{ post.post_title }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                 </table>
+            
+            </div>
+            <!-- MY GOSS END -->
+
+        </div>
+    </main>
+
+
+    <!-- FOOTER START -->
+    {% block footer %} {% include 'block_Files/footer.html' %} {% endblock footer %}
+    <!-- FOOTER END -->
+
+
+
+</body>
+</html>
