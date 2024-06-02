@@ -29,6 +29,7 @@ This shows all the gossips of the users in the platform. It also includes the da
 
 ## Update Gossip Page
 The below screenshot shows how the user can access the edit gossip page. Only the creator of the gossip can access this page.
+
 <img width=80% src="ScreenShots/User_Show_Edit.png" />
 
 This is the edit gossip page
